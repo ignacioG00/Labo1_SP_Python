@@ -1,0 +1,36 @@
+{
+    "especialidades": [
+      {
+        "nombre": "Cardiología",
+        "tarifa_base": 2000
+      },
+      {
+        "nombre": "Pediatría",
+        "tarifa_base": 1500
+      },
+      {
+        "nombre": "Dermatología",
+        "tarifa_base": 1800
+      }
+    ],
+    "obras_sociales": [
+      {
+        "nombre": "OSDE",
+        "descuento": 10,
+        "entre_18_60": 20,
+        "mayores": 30
+      },
+      {
+        "nombre": "Swiss Medical",
+        "descuento": 15,
+        "entre_18_60": 25,
+        "mayores": 35
+      },
+      {
+        "nombre": "Galeno",
+        "descuento": 12,
+        "entre_18_60": 22,
+        "mayores": 32
+      }
+    ]
+  }
