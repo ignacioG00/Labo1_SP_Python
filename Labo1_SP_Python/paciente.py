@@ -26,6 +26,16 @@ class Paciente:
     id_counter = itertools.count(1)
 
     def __init__(self, nombre, apellido, dni, edad, obra_social):
+        """
+        Inicializa un nuevo paciente.
+
+        Args:
+            nombre (str): Nombre del paciente.
+            apellido (str): Apellido del paciente.
+            dni (str): DNI del paciente.
+            edad (int): Edad del paciente.
+            obra_social (str): Obra social del paciente.
+        """
         self.id = next(Paciente.id_counter)
         self.nombre = nombre
         self.apellido = apellido

@@ -24,6 +24,15 @@ class Turno:
     contador_id = 0
 
     def __init__(self, id_paciente, especialidad, monto_a_pagar, estado):
+        """
+        Inicializa un nuevo turno.
+
+        Args:
+            id_paciente (int): ID del paciente.
+            especialidad (str): Especialidad del turno.
+            obra_social (str): Obra social del paciente.
+            edad (int): Edad del paciente.
+        """
         self.id = Turno.contador_id
         Turno.contador_id += 1
         self.id_paciente = id_paciente

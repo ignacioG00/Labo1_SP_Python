@@ -59,7 +59,7 @@ def main_app():
                 id_paciente = int(input("ID del paciente : "))
                 especialidad = input("Especialidad(medico clinico, odontologia, psicologia, traumatologia): ")
 
-                if Validaciones.validar_especialidad(especialidad):
+                if Validaciones.validar_especialidad(especialidad, clinica.especialidades):
                     paciente = next((p for p in clinica.lista_pacientes if p.id == id_paciente), None)
                     if paciente:
                         monto_a_pagar = Validaciones.calcular_monto_a_pagar(paciente.edad, paciente.obra_social)
@@ -71,7 +71,11 @@ def main_app():
                     print("Especialidad no válida.")
                 pass
             case 3: # Ordenar turnos
-                criterio = input("Ordenar por (Obra Social ASC / Monto DESC): ")
+                print("Ordenar por ( 1.Obra Social ASC / 2.Monto DESC): ")
+                criterio = Validaciones.ingresar_numero()
+                while criterio!= 1 and criterio != 2 :
+                    print("Numero invalido, ingrese una opcion valida.")
+                    criterio = Validaciones.ingresar_numero()
                 clinica.ordenar_turnos(criterio)
                 pass
             case 4: # Mostrar pacientes en espera

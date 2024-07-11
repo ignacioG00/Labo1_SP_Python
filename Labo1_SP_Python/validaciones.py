@@ -43,9 +43,19 @@ class Validaciones:
             return False
 
     @staticmethod
-    def validar_obra_social(obra_social, edad):
-        obras_sociales_validas = ["swiss medical", "apres", "pami", "particular"]
-        if obra_social.lower() not in obras_sociales_validas:
+    def validar_obra_social(obra_social, edad, obras_validas):
+        """
+        Valida la obra social.
+
+        Args:
+            obra_social (str): Obra social a validar.
+            edad (int): Edad del paciente.
+            obras_validas (list): Lista de obras sociales válidas.
+
+        Returns:
+            bool: True si es válida, False en caso contrario.
+        """
+        if obra_social.lower() not in obras_validas:
             return False
         if int(edad) >= 60 and obra_social != "pami":
             return False
@@ -54,12 +64,21 @@ class Validaciones:
         return True
 
     @staticmethod
-    def validar_especialidad(especialidad):
-        especialidades_validas = ["medico clinico", "odontologia", "psicologia", "traumatologia"]
+    def validar_especialidad(especialidad, especialidades_validas):
         return especialidad in especialidades_validas
 
     @staticmethod
     def calcular_monto_a_pagar(edad, obra_social):
+        """
+        Calcula el monto a pagar por el turno según la obra social y la edad del paciente.
+
+        Args:
+            obra_social (str): Obra social del paciente.
+            edad (int): Edad del paciente.
+
+        Returns:
+            float: Monto a pagar por el turno.
+        """
         precio_base = 4000
         
         descuentos = {
@@ -87,9 +106,15 @@ class Validaciones:
     
     @staticmethod
     def ingresar_numero():
+        """
+        Solicita al usuario ingresar un número y lo valida.
+
+        Returns:
+            int: Número ingresado válido.
+        """
         while True:
             try:
                 numero = int(input("Ingrese la opcion: "))
                 return numero  # Retorna la edad si se ingresó correctamente como un entero
             except ValueError:
-                print('Opción inválida. Por favor, seleccione una opción válida.', 'Error')
+                print('Opción inválida. Por favor, seleccione un numero válido.', 'Error')

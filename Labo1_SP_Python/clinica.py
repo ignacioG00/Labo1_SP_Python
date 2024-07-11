@@ -38,6 +38,12 @@ class Clinica:
         self.hay_pacientes_sin_atencion = False
     
     def cargar_configuracion(self, archivo_config):
+        """
+        Carga la configuración inicial de la clínica desde un archivo JSON.
+
+        Args:
+            archivo (str): Ruta del archivo JSON con la configuración.
+        """
         try:
             with open(archivo_config, 'r') as file:
                 config = json.load(file)
@@ -87,6 +93,12 @@ class Clinica:
             json.dump(datos, file, indent=4)
 
     def agregar_paciente(self):
+        """
+        Función para dar de alta un paciente en la clínica.
+
+        Args:
+            clinica (Clinica): Instancia de la clínica.
+        """
         nombre = input("Nombre: ")
         apellido = input("Apellido: ")
         while not Validaciones.validar_nombre_apellido(nombre, apellido):
@@ -100,7 +112,7 @@ class Clinica:
             pass
         obra_social = input("Obra social:(Swiss Medical, Apres, PAMI, Particular)")
             
-        while not Validaciones.validar_obra_social(obra_social, edad):
+        while not Validaciones.validar_obra_social(obra_social, edad, self.obras_sociales_validas):
             obra_social = input("Error: Obra social no válida.")
             pass
         paciente = Paciente(nombre.strip(), apellido.strip(), dni.strip(), edad, obra_social.strip())    
@@ -112,6 +124,17 @@ class Clinica:
         print(f"Paciente {paciente.nombre} {paciente.apellido} agregado con éxito.")
 
     def agregar_turno(self, turno):
+        """
+        Asigna un turno a un paciente existente.
+
+        Args:
+            id_paciente (int): ID del paciente.
+            especialidad (str): Especialidad del turno.
+            ValueError: Si el paciente o la especialidad no son válidos.
+
+        Returns:
+            Turno: El turno asignado.
+        """
         if any(p.id == turno.id_paciente for p in self.lista_pacientes):
             self.lista_turnos.append(turno)
             print(f"Turno para paciente con ID {turno.id_paciente} agregado con éxito.")
@@ -123,10 +146,15 @@ class Clinica:
         return paciente.obra_social.lower() if paciente else ""
 
     def ordenar_turnos(self, criterio):
-        if criterio == "Obra Social ASC":
+        """
+        Función para ordenar los turnos según la opción seleccionada.
+        Args:
+            clinica (Clinica): Instancia de la clínica.
+        """
+        if criterio == 1:
             self.lista_turnos.sort(key=lambda t: self.obtener_obra_social_paciente(t.id_paciente))
-        elif criterio == "Monto DESC":
-            self.lista_turnos.sort(key=lambda x: x.monto_a_pagar, reverse=True)
+        elif criterio == 2:
+            self.lista_turnos.sort(key=lambda x: x.monto_a_pagar, reverse=True) 
     
     def obtener_paciente_por_id(self, id_paciente):
         return next((p for p in self.lista_pacientes if p.id == id_paciente), None)
@@ -147,6 +175,9 @@ class Clinica:
             print("No hay pacientes en espera.")
 
     def atender_pacientes(self):
+        """
+        Cambia el estado a 'Finalizado' de los primeros dos turnos en estado 'Activo'.
+        """
         pacientes_en_espera = [t for t in self.lista_turnos if t.estado == "Activo"]
         if len(pacientes_en_espera) == 0:
             print("No hay pacientes en espera.")
@@ -157,6 +188,9 @@ class Clinica:
                 print(f"Paciente con turno ID: {t.id} ha sido atendido.")
 
     def cobrar_atenciones(self):
+        """
+        Cambia el estado a 'Pagado' de los turnos en estado 'Finalizado' y suma el monto al tributo recaudación.
+        """
         turnos_finalizados = [t for t in self.lista_turnos if t.estado == "Finalizado"]
         if len(turnos_finalizados) == 0:
             print("No hay turnos para cobrar.")
@@ -167,6 +201,9 @@ class Clinica:
                 print(f"Se ha cobrado el turno ID: {t.id} por un monto de {t.monto_a_pagar}")
 
     def cerrar_caja(self, archivo_config):
+        """
+        Cierra la caja y actualiza los archivos de pacientes y turnos si no hay pacientes por atender.
+        """
         turnos_pendientes = [t for t in self.lista_turnos if t.estado in ["Activo", "Finalizado"]]
         if len(turnos_pendientes) > 0:
             print("Aún hay pacientes por atender o turnos por cobrar.")
@@ -176,6 +213,9 @@ class Clinica:
             print("Datos guardados y caja cerrada.")
 
     def mostrar_informe(self):
+        """
+        Informa la obra social con menos ingresos.
+        """
     # Filtramos los turnos pagados
         turnos_pagados = filter(lambda t: t.estado == "Pagado", self.lista_turnos)
 
