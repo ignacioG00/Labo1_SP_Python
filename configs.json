@@ -1,0 +1,161 @@
+{
+    "lista_pacientes": [
+        {
+            "id": 1,
+            "nombre": "uriel",
+            "apellido": "guillen",
+            "dni": "23412342",
+            "edad": "25",
+            "obra_social": "particular",
+            "fecha_registro": "2024-07-11 15:21:24"
+        },
+        {
+            "id": 2,
+            "nombre": "leo",
+            "apellido": "messi",
+            "dni": "36",
+            "edad": "35",
+            "obra_social": "apres",
+            "fecha_registro": "2024-07-11 15:21:24"
+        },
+        {
+            "id": 3,
+            "nombre": "leo",
+            "apellido": "paredes",
+            "dni": "215661",
+            "edad": "25",
+            "obra_social": "apres",
+            "fecha_registro": "2024-07-11 15:21:24"
+        },
+        {
+            "id": 4,
+            "nombre": "rodri",
+            "apellido": "depaul",
+            "dni": "12312342",
+            "edad": "60",
+            "obra_social": "pami",
+            "fecha_registro": "2024-07-11 15:21:24"
+        },
+        {
+            "id": 5,
+            "nombre": "uriel",
+            "apellido": "guillen",
+            "dni": "1234123421",
+            "edad": "24",
+            "obra_social": "particular",
+            "fecha_registro": "2024-07-11 15:21:24"
+        }
+    ],
+    "lista_turnos": [
+        {
+            "id": 0,
+            "id_paciente": 1,
+            "especialidad": "medico clinico",
+            "monto_a_pagar": 4000,
+            "estado": "Pagado"
+        },
+        {
+            "id": 1,
+            "id_paciente": 1,
+            "especialidad": "medico clinico",
+            "monto_a_pagar": 4000,
+            "estado": "Pagado"
+        },
+        {
+            "id": 2,
+            "id_paciente": 2,
+            "especialidad": "medico clinico",
+            "monto_a_pagar": 4000,
+            "estado": "Pagado"
+        },
+        {
+            "id": 3,
+            "id_paciente": 3,
+            "especialidad": "medico clinico",
+            "monto_a_pagar": 4000,
+            "estado": "Pagado"
+        },
+        {
+            "id": 4,
+            "id_paciente": 4,
+            "especialidad": "medico clinico",
+            "monto_a_pagar": 4000,
+            "estado": "Pagado"
+        },
+        {
+            "id": 5,
+            "id_paciente": 1,
+            "especialidad": "traumatologia",
+            "monto_a_pagar": 4200.0,
+            "estado": "Pagado"
+        },
+        {
+            "id": 6,
+            "id_paciente": 2,
+            "especialidad": "psicologia",
+            "monto_a_pagar": 2910.0,
+            "estado": "Pagado"
+        },
+        {
+            "id": 7,
+            "id_paciente": 2,
+            "especialidad": "traumatologia",
+            "monto_a_pagar": 2910.0,
+            "estado": "Pagado"
+        },
+        {
+            "id": 8,
+            "id_paciente": 4,
+            "especialidad": "traumatologia",
+            "monto_a_pagar": 1600.0,
+            "estado": "Pagado"
+        },
+        {
+            "id": 9,
+            "id_paciente": 5,
+            "especialidad": "traumatologia",
+            "monto_a_pagar": 4200.0,
+            "estado": "Pagado"
+        },
+        {
+            "id": 10,
+            "id_paciente": 2,
+            "especialidad": "traumatologia",
+            "monto_a_pagar": 2910.0,
+            "estado": "Pagado"
+        },
+        {
+            "id": 11,
+            "id_paciente": 4,
+            "especialidad": "psicologia",
+            "monto_a_pagar": 1600.0,
+            "estado": "Pagado"
+        },
+        {
+            "id": 12,
+            "id_paciente": 4,
+            "especialidad": "traumatologia",
+            "monto_a_pagar": 1600.0,
+            "estado": "Pagado"
+        },
+        {
+            "id": 13,
+            "id_paciente": 2,
+            "especialidad": "traumatologia",
+            "monto_a_pagar": 2910.0,
+            "estado": "Pagado"
+        }
+    ],
+    "especialidades": [
+        "medico clinico",
+        "odontologia",
+        "psicologia",
+        "traumatologia"
+    ],
+    "obras_sociales": [
+        "swiss medical",
+        "apres",
+        "pami",
+        "particular"
+    ]
+}
