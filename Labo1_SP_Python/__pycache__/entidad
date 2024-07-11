@@ -1,0 +1,7 @@
+class Entidad:
+    """Clase base para todas las entidades con ID autoincremental."""
+    _id_counter = 1
+
+    def __init__(self):
+        self.id = Entidad._id_counter
+        Entidad._id_counter += 1

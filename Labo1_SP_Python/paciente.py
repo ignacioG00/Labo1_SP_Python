@@ -22,7 +22,7 @@
 import itertools
 from datetime import datetime
 
-class Paciente:
+class Paciente():
     id_counter = itertools.count(1)
 
     def __init__(self, nombre, apellido, dni, edad, obra_social):
